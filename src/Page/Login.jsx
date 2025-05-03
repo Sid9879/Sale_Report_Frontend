@@ -1,4 +1,4 @@
-import { loginUser } from "@/store/UserSlice";
+import { loginUser } from "@/store/userSlice";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
