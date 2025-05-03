@@ -6,7 +6,7 @@ import {AppSidebar}  from './AppSidebar'
 import Home from './Page/Home'
 import Login from './Page/Login'
 import { Toaster } from "@/components/ui/sonner"
-import Employee_profile from './employee/employee_profile'
+import Employee_profile from './employee/Employee_profile'
 import Dashboard_allEmployee from './employee/Dashboard_allEmployee'
 import Sale from './Create_Sale/Sale'
 import AddProducts from './Page/AddProducts'
