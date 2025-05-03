@@ -13,10 +13,32 @@ import {
 import { toast } from "sonner";
 import { Card, CardContent} from "@/components/ui/card"
 export default function Products() {
-  const Live_Url = import.meta.env.VITE_API_URL
+  const [isVisible, setIsVisible] = useState(false);
         const [search, setsearch] = useState('');
             const [fetchProduct, setfetchProduct] = useState([]);
-        
+            const handleScroll = () => {
+              if (window.scrollY > 50) {
+                setIsVisible(true);
+              } else {
+                setIsVisible(false); 
+              }
+            };
+          
+            // Scroll to top function
+            const scrollToTop = () => {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            };
+          
+            // Add scroll event listener
+            useEffect(() => {
+              window.addEventListener("scroll", handleScroll);
+              return () => {
+                window.removeEventListener("scroll", handleScroll);
+              };
+            }, []);     
     
     const getProducts = async () => {
         try {
@@ -82,6 +104,14 @@ export default function Products() {
           </TableRow>
         </TableFooter>
       </Table>
+      {isVisible && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-2 right-8 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-600 transition h-12 w-12"
+        >
+          ↑
+        </button>
+      )}
     </div>
   )
 }

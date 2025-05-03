@@ -106,7 +106,7 @@ export default function Customers() {
     getCustomers();
   }, []);
 
-  const filterCustomer = customers.filter((item)=>item.email.toLowerCase().includes(search.toLowerCase()) || item.phoneNumber.toString().includes(search)
+  const filterCustomer = customers.filter((item)=>item.email.toLowerCase().includes(search.toLowerCase()) || item.phoneNumber.toString().includes(search) || item.name.toLowerCase().includes(search.toLowerCase())
 )
 
 
@@ -117,7 +117,7 @@ export default function Customers() {
         <form>
           <div className="flex items-center gap-4">
             <div className="flex flex-col w-full gap-2">
-              <Input onChange={(e)=>setsearch(e.target.value)} id="email" placeholder="Search by Customer Email or Phonenumber" />
+              <Input onChange={(e)=>setsearch(e.target.value)} id="email" placeholder="Search by Customer Name, Email or Phonenumber" />
             </div>
           </div>
         </form>
