@@ -79,11 +79,11 @@ export default function PrintPage() {
             {data.todaySale?.map((item, index) => (
               <tr key={index}>
                 <td className="border px-2 py-1 text-center">{index + 1}</td>
-                <td className="border px-2 py-1">{item.title}</td>
-                <td className="border px-2 py-1">{item.size}</td>
-                <td className="border px-2 py-1 text-center">{item.quantity}</td>
-                <td className="border px-2 py-1 text-right">₹{item.price}</td>
-                <td className="border px-2 py-1 text-right">₹{item.price * item.quantity}</td>
+                <td className="border px-2 py-1">{item?.title}</td>
+                <td className="border px-2 py-1">{item?.size}</td>
+                <td className="border px-2 py-1 text-center">{item?.quantity}</td>
+                <td className="border px-2 py-1 text-right">₹{item?.price}</td>
+                <td className="border px-2 py-1 text-right">₹{item?.price * item?.quantity}</td>
               </tr>
             ))}
           </tbody>

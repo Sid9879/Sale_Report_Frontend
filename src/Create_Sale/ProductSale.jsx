@@ -59,7 +59,7 @@ export default function ProductSale() {
         getProducts();
       }, []);
 
-      const Searchproducts = fetchProduct.filter((products)=>products.title.toLowerCase().includes(search.toLowerCase()))
+      const Searchproducts = fetchProduct.filter((products)=>products?.title?.toLowerCase().includes(search.toLowerCase()))
 
       const createSales = async(products)=>{
        try {
@@ -221,11 +221,11 @@ console.log("Type of res.data.success:", typeof res.data.success);
           {todaySale.map((item, i) => (
             <TableRow key={item._id}>
               <TableCell>{i + 1}</TableCell>
-              <TableCell>{item.title}</TableCell>
-              <TableCell>{item.quantity}</TableCell>
-              <TableCell>{item.size}</TableCell>
-              <TableCell>₹{item.price}</TableCell>
-              <TableCell>₹{item.price * item.quantity}</TableCell>
+              <TableCell>{item?.title}</TableCell>
+              <TableCell>{item?.quantity}</TableCell>
+              <TableCell>{item?.size}</TableCell>
+              <TableCell>₹{item?.price}</TableCell>
+              <TableCell>₹{item?.price * item.quantity}</TableCell>
 
 
               <TableCell className="flex gap-2 ">
@@ -308,13 +308,13 @@ console.log("Type of res.data.success:", typeof res.data.success);
           {Searchproducts.map((item, i) => (
             <TableRow key={item._id}>
               <TableCell>{i + 1}</TableCell>
-              <TableCell>{item.title}</TableCell>
-              <TableCell>{item.composition}</TableCell>
-              <TableCell>{item.quantity}</TableCell>
-              <TableCell>{item.size}</TableCell>
-              <TableCell>₹{item.price}</TableCell>
-              <TableCell>{item.category}</TableCell>
-              <TableCell>₹{item.discount}</TableCell>
+              <TableCell>{item?.title}</TableCell>
+              <TableCell>{item?.composition}</TableCell>
+              <TableCell>{item?.quantity}</TableCell>
+              <TableCell>{item?.size}</TableCell>
+              <TableCell>₹{item?.price}</TableCell>
+              <TableCell>{item?.category}</TableCell>
+              <TableCell>₹{item?.discount}</TableCell>
               <TableCell className="flex gap-2 ">
                 <Button onClick={()=>createSales(item)} className='cursor-pointer'>
                   Add Sales

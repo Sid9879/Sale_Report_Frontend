@@ -20,7 +20,7 @@ export default function Products() {
     
     const getProducts = async () => {
         try {
-          const res = await axios.get(`Live_Url/product/getAllItem`, {
+          const res = await axios.get(`https://sale-report.onrender.com/product/getAllItem`, {
             withCredentials: true
           });
           setfetchProduct(Array.isArray(res.data.getAll) ? res.data.getAll : [res.data.getAll]);
