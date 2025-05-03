@@ -6,7 +6,6 @@ import {AppSidebar}  from './AppSidebar'
 import Home from './Page/Home'
 import Login from './Page/Login'
 import { Toaster } from "@/components/ui/sonner"
-import Employee_profile from './employee/Employee_profile'
 import Dashboard_allEmployee from './employee/Dashboard_allEmployee'
 import Sale from './Create_Sale/Sale'
 import AddProducts from './Page/AddProducts'
@@ -18,6 +17,7 @@ import PageNotFound from './Page/PageNotFound'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { logOutUser } from './store/userSlice'
+import Employee_profile from './employee/Employee_profile'
 
 function App() {
  
