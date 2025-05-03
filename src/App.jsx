@@ -24,18 +24,18 @@ function App() {
   let userStore = useSelector((state)=>state.user);
   let Authenticated = userStore.isAuthenticated;
   let dispatch = useDispatch();
-// useEffect(()=>{
-//   const verifyToken = async()=>{
-//      try {
-//        await axios.get(`https://sale-report.onrender.com/user/check`,{
-//         withCredentials:true,
-//       })
-//      } catch (error) {
-//       dispatch(logOutUser());
-//      }
-//   }
-//   verifyToken()
-// },[])
+useEffect(()=>{
+  const verifyToken = async()=>{
+     try {
+       await axios.get(`https://sale-report.onrender.com/user/check`,{
+        withCredentials:true,
+      })
+     } catch (error) {
+      dispatch(logOutUser());
+     }
+  }
+  verifyToken()
+},[])
   return (
  
 <>
