@@ -35,7 +35,6 @@ import { logOutUser } from "./store/userSlice";
 export function AppSidebar() {
   let dispatch = useDispatch();
   let userStore = useSelector((state) => state.user);
-  // console.log(userStore);
   let Authenticated = userStore.isAuthenticated;
   console.log(Authenticated)
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -50,7 +49,7 @@ export function AppSidebar() {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error);
+      toast.error(error.response?.data.msg || error.response?.data.error || "Something went a wrong");
     }
   };
 
