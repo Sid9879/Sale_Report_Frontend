@@ -154,9 +154,9 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild>
                       <Link
                         to="/login"
-                        onClick={() => {
+                        onClick={async() => {
+                         await logoutUser();
                           dispatch(logOutUser());
-                          logoutUser();
                         }}
                       >
                         <LogOut />
