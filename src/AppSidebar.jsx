@@ -49,7 +49,7 @@ export function AppSidebar() {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response?.data.msg || error.response?.data.error || "Something went a wrong");
+      // toast.error(error.response?.data.msg || error.response?.data.error || "Something went a wrong");
     }
   };
 
