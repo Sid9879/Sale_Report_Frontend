@@ -41,7 +41,7 @@ export function AppSidebar() {
 
   const logoutUser = async () => {
     try {
-      const res = await axios.get(`http://localhost:8090/user/logout`, {
+      const res = await axios.get(`https://sale-report.onrender.com/user/logout`, {
         withCredentials: true,
       });
       if (res.data.success) {
@@ -49,7 +49,7 @@ export function AppSidebar() {
       }
     } catch (error) {
       console.log(error);
-      // toast.error(error.response?.data.msg || error.response?.data.error || "Something went a wrong");
+      toast.error(error.response?.data.msg || error.response?.data.error || "Something went a wrong");
     }
   };
 
