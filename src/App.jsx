@@ -18,12 +18,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { logOutUser } from './store/userSlice'
 import Employee_profile from './employee/Employee_profile'
+import UseOnlineStatus from './Page/UseOnlineStatus'
 
 function App() {
  
   let userStore = useSelector((state)=>state.user);
   let Authenticated = userStore.isAuthenticated;
   let dispatch = useDispatch();
+  const isOnline = UseOnlineStatus();
 useEffect(()=>{
   const verifyToken = async()=>{
      try {
@@ -39,7 +41,11 @@ useEffect(()=>{
   return (
  
 <>
-
+ {!isOnline && (
+        <div className="bg-red-500 text-white text-center p-2 fixed top-0 left-0 right-0 z-50">
+          🚫 No Internet Connection
+        </div>
+      )}
 <BrowserRouter>
       <SidebarProvider>
         <div className="flex h-screen">
