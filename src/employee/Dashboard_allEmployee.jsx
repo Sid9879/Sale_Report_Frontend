@@ -104,6 +104,7 @@ const [password, setPassword] = useState("");
           })
           console.log(res.data);
           if(res.data.success){
+            fetchEmployee()
             toast.success(res.data?.msg || 'Employee Deleted')
           }
         } catch (error) {
