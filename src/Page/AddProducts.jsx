@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent} from "@/components/ui/card"
+
 import {
   Dialog,
   DialogContent,
@@ -44,6 +46,7 @@ import axios from "axios";
 import { toast } from "sonner";
 
 export default function AddProducts() {
+  const [search, setsearch] = useState('');
   const [productData, setProductData] = useState({
     title: '',
     composition: '',
@@ -109,8 +112,21 @@ export default function AddProducts() {
     getProducts();
   }, []);
 
+   const Searchproducts = fetchProduct.filter((products)=>products.title.toLowerCase().includes(search.toLowerCase()))
+
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center bg-gray-300'>
+         <Card className="w-full max-w-xl mt-2">
+      <CardContent className="py-4">
+        <form>
+          <div className="flex items-center gap-4">
+            <div className="flex flex-col w-full gap-2">
+              <Input onChange={(e)=>setsearch(e.target.value)} id="email" placeholder="Search product by name" />
+            </div>
+          </div>
+        </form>
+      </CardContent>
+    </Card>
       <div className="flex justify-center items-center w-[80vw] mb-2">
         <Dialog>
           <DialogTrigger asChild>
@@ -162,7 +178,6 @@ export default function AddProducts() {
       </div>
 
       <Table>
-        <TableCaption className='text-pink-600 text-xl'>List of your products.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Sr.No.</TableHead>
@@ -177,7 +192,7 @@ export default function AddProducts() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {fetchProduct.map((item, i) => (
+          {Searchproducts.map((item, i) => (
             <TableRow key={item._id}>
               <TableCell>{i + 1}</TableCell>
               <TableCell>{item.title}</TableCell>
@@ -228,8 +243,9 @@ export default function AddProducts() {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={8}>Total Items</TableCell>
-            <TableCell>{fetchProduct.length}</TableCell>
+           {Searchproducts.length>0&&<TableCell colSpan={1}>Total Items</TableCell>}
+            {Searchproducts.length>0? <TableCell>{Searchproducts.length}</TableCell>:
+                         <TableCell className='text-center' colSpan={8}>No Products found</TableCell>}
           </TableRow>
         </TableFooter>
       </Table>
