@@ -7,3 +7,15 @@ input[type='number']::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield; 
 }
+
+
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .print\:block {
+    display: block !important;
+  }
+}
+

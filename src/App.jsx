@@ -44,12 +44,17 @@ useEffect(()=>{
       <SidebarProvider>
         <div className="flex h-screen">
           {/* Sidebar on the left */}
-         { Authenticated&&<AppSidebar />}
+         {/* { Authenticated&&<AppSidebar />} */}
+         {Authenticated && <div className="print:hidden"><AppSidebar /></div>}
+
+
 
           {/* Main content area */}
           <main className="flex-1 p-4 flex-row">
            
-           {Authenticated&&<SidebarTrigger />}
+           {/* {Authenticated&&<SidebarTrigger />} */}
+{Authenticated && <SidebarTrigger className="print:hidden" />}
+
 
             {/* Route content */}
             <Routes>
