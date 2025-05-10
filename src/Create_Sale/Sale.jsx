@@ -228,8 +228,9 @@ export default function Customers() {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={1}>Total Customers</TableCell>
-            <TableCell>{filterCustomer.length}</TableCell>
+           {filterCustomer.length>0&& <TableCell colSpan={1}>Total Customers</TableCell>}
+            {filterCustomer.length>0?<TableCell>{filterCustomer.length}</TableCell>:
+             <TableCell className='text-center' colSpan={8}>No Customer found</TableCell>}
           </TableRow>
         </TableFooter>
       </Table>
