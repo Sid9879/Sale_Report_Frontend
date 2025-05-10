@@ -16,8 +16,9 @@ export default function Products() {
   const [isVisible, setIsVisible] = useState(false);
         const [search, setsearch] = useState('');
             const [fetchProduct, setfetchProduct] = useState([]);
+
             const handleScroll = () => {
-              if (window.scrollY > 50) {
+              if (window.scrollY >0) {
                 setIsVisible(true);
               } else {
                 setIsVisible(false); 
@@ -99,8 +100,9 @@ export default function Products() {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={1}>Total Items</TableCell>
-            <TableCell>{Searchproducts.length}</TableCell>
+            {Searchproducts.length>0&&<TableCell colSpan={1}>Total Items</TableCell>}
+           {Searchproducts.length>0? <TableCell>{Searchproducts.length}</TableCell>:
+             <TableCell className='text-center' colSpan={8}>No Products found</TableCell>}
           </TableRow>
         </TableFooter>
       </Table>
@@ -112,6 +114,7 @@ export default function Products() {
           ↑
         </button>
       )}
+      
     </div>
   )
 }
