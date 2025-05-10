@@ -97,7 +97,6 @@ const [password, setPassword] = useState("");
       };
 
       const deleteEmployee = async(employee)=>{
-        console.log(employee)
         try {
           const res = await axios.delete( `https://sale-report.onrender.com/user/deleteemployee/${employee._id}`,{
             withCredentials:true
