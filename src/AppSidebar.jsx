@@ -83,14 +83,14 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>}
 
-              { userStore.user?.isAdmin&& <SidebarMenuItem>
+              {/* { userStore.user?.isAdmin&& <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link to="/billing">
                     <Receipt/>
                     <span>Billing</span>
                   </Link>
                 </SidebarMenuButton>
-              </SidebarMenuItem>}
+              </SidebarMenuItem>} */}
 
               {/* Products Menu Item */}
               <SidebarMenuItem>

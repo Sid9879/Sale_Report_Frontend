@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -97,7 +97,7 @@ formData
               <Input type='number' id="gst" placeholder="Gst" />
             </div>
              <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="totalAmount">Total Amount%</Label>
+              <Label htmlFor="totalAmount">Total Amount</Label>
               <Input type='number' id="totalAmount" placeholder="Total Amount" />
             </div>
           </div>
