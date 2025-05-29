@@ -39,7 +39,7 @@ export default function PrintPage() {
           className="mb-1 mx-auto w-[100px] h-[100px]"
         />
         <h1 className="text-2xl font-bold text-blue-800">Om Agro Center</h1>
-        <p className="text-sm">Gorakhpur, Uttar Pradesh - 273001</p>
+        <p className="text-sm">Gorakhpur, Uttar Pradesh - 273306</p>
         <p className="text-sm">Phone: 7394090894 | GSTIN: XX-XXXXXXXXXX</p>
       </div>
 
