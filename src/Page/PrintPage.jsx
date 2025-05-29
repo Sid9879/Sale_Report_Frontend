@@ -54,7 +54,7 @@ export default function PrintPage() {
       <table className="w-full border border-gray-300 text-sm mb-6">
         <thead>
           <tr className="bg-gray-200">
-            <th className={th}>#</th>
+            <th className={th}>Sr.No.</th>
             <th className={th}>Product</th>
             <th className={th}>Size</th>
             <th className={th}>Qty</th>
