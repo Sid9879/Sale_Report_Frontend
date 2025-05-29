@@ -38,9 +38,12 @@ import { useSelector } from 'react-redux';
 
   export default function Dashboard_allEmployee() {
     let userStore = useSelector((state)=>state.user)
-    console.log(userStore)
+    // console.log(userStore)
+    const [sales, setsales]= useState([]);
+    console.log(sales)
     const [employee, setemployee] = useState([]);
-    console.log(employee)
+    // console.log(employee)
+    const [salesTodayAmount,setsalesTodayAmount] = useState()
     const [selectedEmployee, setSelectedEmployee] = useState(null);
 const [phoneNumber, setPhoneNumber] = useState("");
 const [password, setPassword] = useState("");
@@ -110,6 +113,25 @@ const [password, setPassword] = useState("");
                toast.error(error.response?.data?.msg || error.response?.data?.error || "Registration failed");
         }
       }
+
+      useEffect(()=>{
+          const getTodaySalesData = async()=>{
+        try{
+           let getData = await axios.get(`https://sale-report.onrender.com/sales/saleTodayGet`,{
+            withCredentials:true
+           })
+           console.log(getData.data)
+
+           setsales(getData.data.sales)
+           setsalesTodayAmount(getData.data.totalTodaySales)
+
+        }
+        catch(error){
+        toast.error(error.response?.data?.msg || error.response?.data?.error || "Registration failed");
+        }
+      }
+      getTodaySalesData()
+      },[])
   return (
     <div>
       <Table className='w-[80vw]'>
@@ -132,37 +154,6 @@ const [password, setPassword] = useState("");
             <TableCell>{item.phoneNumber}</TableCell>
             <TableCell className="text-right px-2">
             <div className="flex gap-2 justify-end">
-    {/* <Dialog>
-      <DialogTrigger asChild>
-        <Button onClick = {()=>updateEmployee(item)} >Edit Profile</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              PhoneNumber
-            </Label>
-            <Input id="name" value="" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Password
-            </Label>
-            <Input id="username" value="" className="col-span-3" />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog> */}
-
 <Dialog>
   <DialogTrigger asChild>
     <Button onClick={() => updateEmployee(item)}>Edit Profile</Button>
@@ -201,8 +192,6 @@ const [password, setPassword] = useState("");
   </DialogContent>
 </Dialog>
 
-
-   
     <AlertDialog>
   <AlertDialogTrigger  className= 'bg-black text-white w-20 rounded-md font-bold'>Delete</AlertDialogTrigger>
   <AlertDialogContent>
@@ -233,6 +222,57 @@ const [password, setPassword] = useState("");
       </TableFooter>
     </Table>
    
+   {/* show today sales */}
+
+      <h1 className='text-center font-bold text-2xl mt-7'>Today Sales</h1>
+    <Table>
+      <TableCaption></TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="w-[100px]">Sr.No.</TableHead>
+          <TableHead>Customer Name</TableHead>
+          <TableHead className="text-right">Amount</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+     {sales.map((sale, index) => (
+  <React.Fragment key={sale._id}>
+    <TableRow className="bg-gray-100">
+      <TableCell>{index + 1}</TableCell>
+      <TableCell>{sale.customerId.name}</TableCell>
+      <TableCell>
+        <table className="w-full text-sm border border-gray-300">
+          <thead>
+            <tr>
+              <th className="text-left px-2 py-1 border">Product Name</th>
+              <th className="text-left px-2 py-1 border">Quantity</th>
+              <th className="text-left px-2 py-1 border">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sale.products.map((item, i) => (
+              <tr key={item._id}>
+                <td className="px-2 py-1 border truncate max-w-[90px]">{item.title}</td>
+                <td className="px-2 py-1 border">{item.quantity}</td>
+                <td className="px-2 py-1 border">₹{item.price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </TableCell>
+      <TableCell className="text-right font-semibold">₹{sale.totalAmount}</TableCell>
+    </TableRow>
+  </React.Fragment>
+))}
+
+      </TableBody>
+      <TableFooter>
+        <TableRow>
+          <TableCell colSpan={3}>Total Amount</TableCell>
+          <TableCell className="text-right">{salesTodayAmount}</TableCell>
+        </TableRow>
+      </TableFooter>
+    </Table>
 
     </div>
   )
