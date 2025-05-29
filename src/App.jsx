@@ -19,6 +19,7 @@ import axios from 'axios'
 import { logOutUser } from './store/userSlice'
 import Employee_profile from './employee/Employee_profile'
 import UseOnlineStatus from './Page/UseOnlineStatus'
+import ManageBilling from './Page/ManageBilling'
 
 function App() {
  
@@ -53,14 +54,11 @@ useEffect(()=>{
          {/* { Authenticated&&<AppSidebar />} */}
          {Authenticated && <div className="print:hidden "><AppSidebar /></div>}
 
-
-
           {/* Main content area */}
           <main className="flex-1 p-4 flex-row">
            
            {/* {Authenticated&&<SidebarTrigger />} */}
 {Authenticated && <SidebarTrigger className="print:hidden"/>}
-
 
             {/* Route content */}
             <Routes>
@@ -75,6 +73,7 @@ useEffect(()=>{
               <Route path="/saleProducts" element={Authenticated?<ProductSale/>:<Navigate to = '/login'/>}/>
               <Route path="/print" element={Authenticated?<PrintPage/>:<Navigate to = '/login'/>}/>
               <Route path="/profile" element={Authenticated?<UserProfile/>:<Navigate to = '/login'/>}/>
+              <Route path="/billing" element={Authenticated?<ManageBilling/>:<Navigate to = '/login'/>}/>
               <Route path="*" element={<PageNotFound/>}/>
 
             </Routes>

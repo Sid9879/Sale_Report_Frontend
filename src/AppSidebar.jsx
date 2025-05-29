@@ -29,7 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "sonner";
 import { TrendingUp } from "lucide-react";
-import { PackagePlus } from "lucide-react";
+import { PackagePlus,Receipt  } from "lucide-react";
 import { logOutUser } from "./store/userSlice";
 
 export function AppSidebar() {
@@ -79,6 +79,15 @@ export function AppSidebar() {
                   <Link to="/dashboard/allEmployee">
                     <LayoutDashboard />
                     <span>Dashboard</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>}
+
+              { userStore.user?.isAdmin&& <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link to="/billing">
+                    <Receipt/>
+                    <span>Billing</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>}
