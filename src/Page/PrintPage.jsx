@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import QRCode from "react-qr-code";
+import logo from '../assets/logo.png'
+import sidsign from '../assets/sidsign.jpg'
 
 export default function PrintPage() {
   const { state } = useLocation();
@@ -32,11 +34,11 @@ export default function PrintPage() {
       {/* Header */}
       <div className="text-center mb-5">
         <img
-          src="https://via.placeholder.com/100x50?text=Logo"
+          src={logo}
           alt="Logo"
-          className="mb-1 mx-auto"
+          className="mb-1 mx-auto w-[100px] h-[100px]"
         />
-        <h1 className="text-2xl font-bold text-blue-800">Om Traders</h1>
+        <h1 className="text-2xl font-bold text-blue-800">Om Agro Center</h1>
         <p className="text-sm">Gorakhpur, Uttar Pradesh - 273001</p>
         <p className="text-sm">Phone: 7394090894 | GSTIN: XX-XXXXXXXXXX</p>
       </div>
@@ -91,8 +93,10 @@ export default function PrintPage() {
         </div>
 
         <div className="text-right">
+          <div className="w-36 ml-auto">
+            <img className="w-[150px] h-[30px]" src={sidsign} alt="sign" />
+          </div>
           <p className="text-xs mb-12">Authorized Signature</p>
-          <div className="border-t border-black w-36 ml-auto"></div>
         </div>
       </div>
 
