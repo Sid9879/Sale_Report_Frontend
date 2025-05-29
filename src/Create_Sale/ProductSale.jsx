@@ -210,7 +210,7 @@ console.log("Type of res.data.success:", typeof res.data.success);
             <TableHead>Actions</TableHead>
            <TableHead>
            <center>
-            <Button onClick={handlePrint} className='mt-4 bg-blue-600 hover:bg-blue-700'>
+            <Button onClick={handlePrint} className='mt-4 bg-blue-600 hover:bg-blue-700 cursor-pointer'>
               Print
             </Button>
           </center>
